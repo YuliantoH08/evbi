@@ -73,7 +73,15 @@
                       <a href="<?php echo base_url ?>admin/?page=departments" class="nav-link nav-departments">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                          List Event
+                          Departments
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=archives" class="nav-link nav-archives">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                          List event
                         </p>
                       </a>
                     </li>

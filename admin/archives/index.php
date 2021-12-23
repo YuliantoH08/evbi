@@ -9,7 +9,10 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Thesis Archives</h3>
+		<h3 class="card-title">List </h3>
+		<div class="card-tools">
+			<a href="<?php echo base_url ?>admin/?page=archives/submit-archive" class="nav-link nav-archives"><span class="fas fa-plus"></span>  Add Event</a>
+		</div>
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">
