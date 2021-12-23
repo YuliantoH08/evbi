@@ -209,7 +209,7 @@
         }
         start_loader();
         $.ajax({
-            url:_base_url_+"classes/Users.php?f=save_student",
+            url:_base_url_+"classes/Users.php?f=save_editor",
             method:'POST',
             data:_this.serialize(),
             dataType:'json',

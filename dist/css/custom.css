@@ -280,7 +280,7 @@ nav.text-light .nav-link {
     float: left;
 }
 
-#student-img-avatar {
+#editor-img-avatar {
     object-fit: scale-down;
     object-position: center center;
     height: 35px;

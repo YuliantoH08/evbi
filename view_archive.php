@@ -8,10 +8,10 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
         }
     }
     $submitted = "N/A";
-    if(isset($student_id)){
-        $student = $conn->query("SELECT * FROM student_list where id = '{$student_id}'");
-        if($student->num_rows > 0){
-            $res = $student->fetch_array();
+    if(isset($editor_id)){
+        $editor = $conn->query("SELECT * FROM editor_list where id = '{$editor_id}'");
+        if($editor->num_rows > 0){
+            $res = $editor->fetch_array();
             $submitted = $res['email'];
         }
     }
@@ -34,7 +34,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 <div class="container-fluid">
                     <h2><b><?= isset($title) ? $title : "" ?></b></h2>
                     <small class="text-muted">Submitted by <b class="text-info"><?= $submitted ?></b> on  <?= date("F d, Y h:i A",strtotime($date_created)) ?></small>
-                    <?php if(isset($student_id) && $_settings->userdata('login_type') == "2" && $student_id == $_settings->userdata('id')): ?>
+                    <?php if(isset($editor_id) && $_settings->userdata('login_type') == "2" && $editor_id == $_settings->userdata('id')): ?>
                         <div class="form-group">
                             <a href="./?page=submit-archive&id=<?= isset($id) ? $id : "" ?>" class="btn btn-flat btn-default bg-navy btn-sm"><i class="fa fa-edit"></i> Edit</a>
                             <button type="button" data-id = "<?= isset($id) ? $id : "" ?>" class="btn btn-flat btn-danger btn-sm delete-data"><i class="fa fa-trash"></i> Delete</button>

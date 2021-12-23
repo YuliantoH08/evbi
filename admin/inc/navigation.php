@@ -2,7 +2,7 @@
 <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand bg-dark">
         <!-- Brand Logo -->
-        <a href="<?php echo base_url ?>./frontend" class="brand-link bg-yellow text-sm  shadow-white">
+        <a href="<?php echo base_url ?>admin" class="brand-link bg-yellow text-sm  shadow-white">
         <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
         <span class="brand-text text-navy font-weight-light"><?php echo $_settings->info('short_name') ?></span>
         </a>

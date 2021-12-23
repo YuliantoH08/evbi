@@ -40,9 +40,9 @@ class Login extends DBConnection {
 			redirect('admin/login.php');
 		}
 	}
-	function student_login(){
+	function editor_login(){
 		extract($_POST);
-		$qry = $this->conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as fullname from student_list where email = '$email' and `password` = md5('$password') ");
+		$qry = $this->conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as fullname from editor_list where email = '$email' and `password` = md5('$password') ");
 		if($this->conn->error){
 			$resp['status'] = 'failed';
 			$resp['msg'] = "An error occurred while fetching data. Error:". $this->conn->error;
@@ -67,7 +67,7 @@ class Login extends DBConnection {
 		}
 		return json_encode($resp);
 	}
-	public function student_logout(){
+	public function editor_logout(){
 		if($this->settings->sess_des()){
 			redirect('./');
 		}
@@ -82,11 +82,11 @@ switch ($action) {
 	case 'logout':
 		echo $auth->logout();
 		break;
-	case 'student_login':
-		echo $auth->student_login();
+	case 'editor_login':
+		echo $auth->editor_login();
 		break;
-	case 'student_logout':
-		echo $auth->student_logout();
+	case 'editor_logout':
+		echo $auth->editor_logout();
 		break;
 	default:
 		echo $auth->index();

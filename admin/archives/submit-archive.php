@@ -7,8 +7,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
             $$k = $v;
         }
     }
-    if(isset($student_id)){
-        if($student_id != $_settings->userdata('id')){
+    if(isset($editor_id)){
+        if($editor_id != $_settings->userdata('id')){
             echo "<script> alert('You don\'t have an access to this page'); location.replace('./'); </script>";
         }
     }

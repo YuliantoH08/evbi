@@ -9,7 +9,7 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Students</h3>
+		<h3 class="card-title">List of editors</h3>
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">
@@ -37,7 +37,7 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ', middlename) as name from `student_list`  order by concat(lastname,', ',firstname,' ', middlename) asc ");
+						$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ', middlename) as name from `editor_list`  order by concat(lastname,', ',firstname,' ', middlename) asc ");
 						while($row = $qry->fetch_assoc()):
 					?>
 						<tr>
@@ -78,14 +78,14 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete <b>"+$(this).attr('data-name')+"</b> from Student List permanently?","delete_user",[$(this).attr('data-id')])
+			_conf("Are you sure to delete <b>"+$(this).attr('data-name')+"</b> from editor List permanently?","delete_user",[$(this).attr('data-id')])
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.verify_user').click(function(){
 			_conf("Are you sure to verify <b>"+$(this).attr('data-name')+"<b/>?","verify_user",[$(this).attr('data-id')])
 		})
 		$('.view_details').click(function(){
-			uni_modal('Student Details',"students/view_details.php?id="+$(this).attr('data-id'),'mid-large')
+			uni_modal('editor Details',"editors/view_details.php?id="+$(this).attr('data-id'),'mid-large')
 		})
 		$('.table').dataTable();
 
@@ -93,7 +93,7 @@
 	function delete_user($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Users.php?f=delete_student",
+			url:_base_url_+"classes/Users.php?f=delete_editor",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",
@@ -115,7 +115,7 @@
 	function verify_user($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Users.php?f=verify_student",
+			url:_base_url_+"classes/Users.php?f=verify_editor",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",

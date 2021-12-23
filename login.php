@@ -112,7 +112,7 @@
             el.hide()
         start_loader();
         $.ajax({
-            url:_base_url_+"classes/Login.php?f=student_login",
+            url:_base_url_+"classes/Login.php?f=editor_login",
             method:'POST',
             data:_this.serialize(),
             dataType:'json',

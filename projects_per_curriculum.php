@@ -31,8 +31,8 @@ if(isset($_GET['id'])){
                 $offset = 10 * ($page - 1);
                 $paginate = " limit {$limit} offset {$offset}";
                 $wherecid = " and curriculum_id = '{$id}' ";
-                $students = $conn->query("SELECT * FROM `student_list` where id in (SELECT student_id FROM archive_list where `status` = 1 {$wherecid})");
-                $student_arr = array_column($students->fetch_all(MYSQLI_ASSOC),'email','id');
+                $editors = $conn->query("SELECT * FROM `editor_list` where id in (SELECT editor_id FROM archive_list where `status` = 1 {$wherecid})");
+                $editor_arr = array_column($editors->fetch_all(MYSQLI_ASSOC),'email','id');
                 $count_all = $conn->query("SELECT * FROM archive_list where `status` = 1 {$wherecid}")->num_rows;    
                 $pages = ceil($count_all/$limit);
                 $archives = $conn->query("SELECT * FROM archive_list where `status` = 1 {$wherecid} order by unix_timestamp(date_created) desc {$paginate}");    
@@ -49,7 +49,7 @@ if(isset($_GET['id'])){
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-12">
                                 <h3 class="text-navy"><b><?php echo $row['title'] ?></b></h3>
-                                <small class="text-muted">By <b class="text-info"><?= isset($student_arr[$row['student_id']]) ? $student_arr[$row['student_id']] : "N/A" ?></b></small>
+                                <small class="text-muted">By <b class="text-info"><?= isset($editor_arr[$row['editor_id']]) ? $editor_arr[$row['editor_id']] : "N/A" ?></b></small>
                                 <p class="truncate-5"><?= $row['abstract'] ?></p>
                             </div>
                         </div>

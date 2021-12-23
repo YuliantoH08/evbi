@@ -125,7 +125,7 @@ Class Users extends DBConnection {
 		}
 		return json_encode($resp);
 	}
-	public function save_student(){
+	public function save_editor(){
 		extract($_POST);
 		$data = '';
 		if(isset($oldpassword)){
@@ -134,7 +134,7 @@ Class Users extends DBConnection {
 										 "msg"=>'Old Password is Incorrect'));
 			}
 		}
-		$chk = $this->conn->query("SELECT * FROM `student_list` where email ='{$email}' ".($id>0? " and id!= '{$id}' " : ""))->num_rows;
+		$chk = $this->conn->query("SELECT * FROM `editor_list` where email ='{$email}' ".($id>0? " and id!= '{$id}' " : ""))->num_rows;
 		if($chk > 0){
 			return 3;
 			exit;
@@ -152,10 +152,10 @@ Class Users extends DBConnection {
 		}
 
 		if(empty($id)){
-			$qry = $this->conn->query("INSERT INTO student_list set {$data}");
+			$qry = $this->conn->query("INSERT INTO editor_list set {$data}");
 			if($qry){
 				$id = $this->conn->insert_id;
-				$this->settings->set_flashdata('success','Student User Details successfully saved.');
+				$this->settings->set_flashdata('success','editor User Details successfully saved.');
 				$resp['status'] = "success";
 			}else{
 				$resp['status'] = "failed";
@@ -163,9 +163,9 @@ Class Users extends DBConnection {
 			}
 
 		}else{
-			$qry = $this->conn->query("UPDATE student_list set $data where id = {$id}");
+			$qry = $this->conn->query("UPDATE editor_list set $data where id = {$id}");
 			if($qry){
-				$this->settings->set_flashdata('success','Student User Details successfully updated.');
+				$this->settings->set_flashdata('success','editor User Details successfully updated.');
 				if($id == $this->settings->userdata('id')){
 					foreach($_POST as $k => $v){
 						if($k != 'id'){
@@ -184,7 +184,7 @@ Class Users extends DBConnection {
 		}
 		
 		if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
-			$fname = 'uploads/student-'.$id.'.png';
+			$fname = 'uploads/editor-'.$id.'.png';
 			$dir_path =base_app. $fname;
 			$upload = $_FILES['img']['tmp_name'];
 			$type = mime_content_type($upload);
@@ -212,7 +212,7 @@ Class Users extends DBConnection {
 				}
 			}
 			if(isset($uploaded_img)){
-				$this->conn->query("UPDATE student_list set `avatar` = CONCAT('{$fname}','?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$id}' ");
+				$this->conn->query("UPDATE editor_list set `avatar` = CONCAT('{$fname}','?v=',unix_timestamp(CURRENT_TIMESTAMP)) where id = '{$id}' ");
 				if($id == $this->settings->userdata('id')){
 						$this->settings->set_userdata('avatar',$fname);
 				}
@@ -221,13 +221,13 @@ Class Users extends DBConnection {
 		
 		return  json_encode($resp);
 	}
-	public function delete_student(){
+	public function delete_editor(){
 		extract($_POST);
-		$avatar = $this->conn->query("SELECT avatar FROM student_list where id = '{$id}'")->fetch_array()['avatar'];
-		$qry = $this->conn->query("DELETE FROM student_list where id = $id");
+		$avatar = $this->conn->query("SELECT avatar FROM editor_list where id = '{$id}'")->fetch_array()['avatar'];
+		$qry = $this->conn->query("DELETE FROM editor_list where id = $id");
 		if($qry){
 			$avatar = explode("?",$avatar)[0];
-			$this->settings->set_flashdata('success','Student User Details successfully deleted.');
+			$this->settings->set_flashdata('success','editor User Details successfully deleted.');
 			if(is_file(base_app.$avatar))
 				unlink(base_app.$avatar);
 			$resp['status'] = 'success';
@@ -236,11 +236,11 @@ Class Users extends DBConnection {
 		}
 		return json_encode($resp);
 	}
-	public function verify_student(){
+	public function verify_editor(){
 		extract($_POST);
-		$update = $this->conn->query("UPDATE `student_list` set `status` = 1 where id = $id");
+		$update = $this->conn->query("UPDATE `editor_list` set `status` = 1 where id = $id");
 		if($update){
-			$this->settings->set_flashdata('success','Student Account has verified successfully.');
+			$this->settings->set_flashdata('success','editor Account has verified successfully.');
 			$resp['status'] = 'success';
 		}else{
 			$resp['status'] = 'failed';
@@ -259,14 +259,14 @@ switch ($action) {
 	case 'delete':
 		echo $users->delete_users();
 	break;
-	case 'save_student':
-		echo $users->save_student();
+	case 'save_editor':
+		echo $users->save_editor();
 	break;
-	case 'delete_student':
-		echo $users->delete_student();
+	case 'delete_editor':
+		echo $users->delete_editor();
 	break;
-	case 'verify_student':
-		echo $users->verify_student();
+	case 'verify_editor':
+		echo $users->verify_editor();
 	break;
 	default:
 		// echo $sysset->index();

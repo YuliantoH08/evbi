@@ -1,11 +1,11 @@
 <?php 
-$user = $conn->query("SELECT s.*,d.name as department, c.name as curriculum,CONCAT(lastname,', ',firstname,' ',middlename) as fullname FROM student_list s inner join department_list d on s.department_id = d.id inner join curriculum_list c on s.curriculum_id = c.id where s.id ='{$_settings->userdata('id')}'");
+$user = $conn->query("SELECT s.*,d.name as department, c.name as curriculum,CONCAT(lastname,', ',firstname,' ',middlename) as fullname FROM editor_list s inner join department_list d on s.department_id = d.id inner join curriculum_list c on s.curriculum_id = c.id where s.id ='{$_settings->userdata('id')}'");
 foreach($user->fetch_array() as $k =>$v){
     $$k = $v;
 }
 ?>
 <style>
-    .student-img{
+    .editor-img{
 		object-fit:scale-down;
 		object-position:center center;
         height:200px;
@@ -27,12 +27,12 @@ foreach($user->fetch_array() as $k =>$v){
                     <div class="row">
                         <div class="col-lg-4 col-sm-12">
                             <center>
-                                <img src="<?= validate_image($avatar) ?>" alt="Student Image" class="img-fluid student-img bg-gradient-dark border">
+                                <img src="<?= validate_image($avatar) ?>" alt="editor Image" class="img-fluid editor-img bg-gradient-dark border">
                             </center>
                         </div>
                         <div class="col-lg-8 col-sm-12">
                             <dl>
-                                <dt class="text-navy">Student Name:</dt>
+                                <dt class="text-navy">editor Name:</dt>
                                 <dd class="pl-4"><?= ucwords($fullname) ?></dd>
                                 <dt class="text-navy">Gender:</dt>
                                 <dd class="pl-4"><?= ucwords($gender) ?></dd>

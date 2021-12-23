@@ -15,8 +15,8 @@
                     $keyword = $conn->real_escape_string($_GET['q']);
                     $search = " and (title LIKE '%{$keyword}%' or abstract  LIKE '%{$keyword}%' or members LIKE '%{$keyword}%' or curriculum_id in (SELECT id from curriculum_list where name  LIKE '%{$keyword}%' or description  LIKE '%{$keyword}%') or curriculum_id in (SELECT id from curriculum_list where department_id in (SELECT id FROM department_list where name  LIKE '%{$keyword}%' or description  LIKE '%{$keyword}%'))) ";
                 }
-                $students = $conn->query("SELECT * FROM `student_list` where id in (SELECT student_id FROM archive_list where `status` = 1 {$search})");
-                $student_arr = array_column($students->fetch_all(MYSQLI_ASSOC),'email','id');
+                $editors = $conn->query("SELECT * FROM `editor_list` where id in (SELECT editor_id FROM archive_list where `status` = 1 {$search})");
+                $editor_arr = array_column($editors->fetch_all(MYSQLI_ASSOC),'email','id');
                 $count_all = $conn->query("SELECT * FROM archive_list where `status` = 1 {$search}")->num_rows;    
                 $pages = ceil($count_all/$limit);
                 $archives = $conn->query("SELECT * FROM archive_list where `status` = 1 {$search} order by unix_timestamp(date_created) desc {$paginate}");    
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-12">
                                 <h3 class="text-navy"><b><?php echo $row['title'] ?></b></h3>
-                                <small class="text-muted">By <b class="text-info"><?= isset($student_arr[$row['student_id']]) ? $student_arr[$row['student_id']] : "N/A" ?></b></small>
+                                <small class="text-muted">By <b class="text-info"><?= isset($editor_arr[$row['editor_id']]) ? $editor_arr[$row['editor_id']] : "N/A" ?></b></small>
                                 <p class="truncate-5"><?= $row['abstract'] ?></p>
                             </div>
                         </div>

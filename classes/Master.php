@@ -190,7 +190,7 @@ Class Master extends DBConnection {
 				}
 			}
 			$_POST['archive_code'] = $pref.$code;
-			$_POST['student_id'] = $this->settings->userdata('id');
+			$_POST['users_id'] = $this->settings->userdata('id');
 			$_POST['curriculum_id'] = $this->settings->userdata('curriculum_id');
 		}
 		if(isset($_POST['abstract']))

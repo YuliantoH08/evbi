@@ -30,9 +30,9 @@
                         <tbody>
                             <?php 
                                 $i = 1;
-                                $curriculum = $conn->query("SELECT * FROM curriculum_list where id in (SELECT curriculum_id from `archive_list` where student_id = '{$_settings->userdata('id')}' )");
+                                $curriculum = $conn->query("SELECT * FROM curriculum_list where id in (SELECT curriculum_id from `archive_list` where editor_id = '{$_settings->userdata('id')}' )");
                                 $cur_arr = array_column($curriculum->fetch_all(MYSQLI_ASSOC),'name','id');
-                                $qry = $conn->query("SELECT * from `archive_list` where student_id = '{$_settings->userdata('id')}' order by unix_timestamp(`date_created`) asc ");
+                                $qry = $conn->query("SELECT * from `archive_list` where editor_id = '{$_settings->userdata('id')}' order by unix_timestamp(`date_created`) asc ");
                                 while($row = $qry->fetch_assoc()):
                             ?>
                                 <tr>

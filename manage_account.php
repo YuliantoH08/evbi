@@ -1,11 +1,11 @@
 <?php 
-$user = $conn->query("SELECT s.*,d.name as department, c.name as curriculum,CONCAT(lastname,', ',firstname,' ',middlename) as fullname FROM student_list s inner join department_list d on s.department_id = d.id inner join curriculum_list c on s.curriculum_id = c.id where s.id ='{$_settings->userdata('id')}'");
+$user = $conn->query("SELECT s.*,d.name as department, c.name as curriculum,CONCAT(lastname,', ',firstname,' ',middlename) as fullname FROM editor_list s inner join department_list d on s.department_id = d.id inner join curriculum_list c on s.curriculum_id = c.id where s.id ='{$_settings->userdata('id')}'");
 foreach($user->fetch_array() as $k =>$v){
     $$k = $v;
 }
 ?>
 <style>
-    .student-img{
+    .editor-img{
 		object-fit:scale-down;
 		object-position:center center;
         height:200px;
@@ -85,7 +85,7 @@ foreach($user->fetch_array() as $k =>$v){
                             </div>
 
                             <div class="form-group text-center">
-                                <img src="<?= validate_image(isset($avatar) ? $avatar : "") ?>" alt="My Avatar" id="cimg" class="img-fluid student-img bg-gradient-dark border">
+                                <img src="<?= validate_image(isset($avatar) ? $avatar : "") ?>" alt="My Avatar" id="cimg" class="img-fluid editor-img bg-gradient-dark border">
                             </div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@ foreach($user->fetch_array() as $k =>$v){
             }
             start_loader();
             $.ajax({
-                url:_base_url_+"classes/Users.php?f=save_student",
+                url:_base_url_+"classes/Users.php?f=save_editor",
                 data: new FormData($(this)[0]),
                 cache: false,
                 contentType: false,

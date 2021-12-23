@@ -37,10 +37,10 @@
             <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Verified Students</span>
+            <span class="info-box-text">Verified editors</span>
             <span class="info-box-number text-right">
                 <?php 
-                    echo $conn->query("SELECT * FROM `student_list` where `status` = 1")->num_rows;
+                    echo $conn->query("SELECT * FROM `editor_list` where `status` = 1")->num_rows;
                 ?>
             </span>
             </div>
@@ -53,10 +53,10 @@
             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Not Verified Students</span>
+            <span class="info-box-text">Not Verified editors</span>
             <span class="info-box-number text-right">
                 <?php 
-                    echo $conn->query("SELECT * FROM `student_list` where `status` = 0")->num_rows;
+                    echo $conn->query("SELECT * FROM `editor_list` where `status` = 0")->num_rows;
                 ?>
             </span>
             </div>
