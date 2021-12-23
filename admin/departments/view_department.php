@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT * FROM `package_list` where id = '{$_GET['id']}'");
+    $qry = $conn->query("SELECT c.*, d.name as curriculum from `departments_list` c inner join `curriculum_list` d on c.curriculum_id = d.id where c.id = '{$_GET['id']}'");
     if($qry->num_rows > 0){
         $res = $qry->fetch_array();
         foreach($res as $k => $v){

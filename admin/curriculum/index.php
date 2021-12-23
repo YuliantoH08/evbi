@@ -9,9 +9,9 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Curriculum</h3>
+		<h3 class="card-title">List Gedung </h3>
 		<div class="card-tools">
-			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Add New Curriculum</a>
+			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Add Data Gedung</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -84,16 +84,16 @@
 <script>
 	$(document).ready(function(){
         $('#create_new').click(function(){
-			uni_modal("Curriculum Details","curriculum/manage_curriculum.php")
+			uni_modal("Data Gedung","curriculum/manage_curriculum.php")
 		})
         $('.edit_data').click(function(){
-			uni_modal("Curriculum Details","curriculum/manage_curriculum.php?id="+$(this).attr('data-id'))
+			uni_modal("Data Gedung","curriculum/manage_curriculum.php?id="+$(this).attr('data-id'))
 		})
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this Curriculum permanently?","delete_curriculum",[$(this).attr('data-id')])
+			_conf("Yakin Menghapus Data Gedung ?","delete_curriculum",[$(this).attr('data-id')])
 		})
 		$('.view_data').click(function(){
-			uni_modal("curriculum Details","curriculum/view_curriculum.php?id="+$(this).attr('data-id'))
+			uni_modal("Data Gedung","curriculum/view_curriculum.php?id="+$(this).attr('data-id'))
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable({

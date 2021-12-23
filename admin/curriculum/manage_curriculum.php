@@ -16,8 +16,8 @@ if(isset($_GET['id'])){
     <form action="" id="curriculum-form">
         <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
         <div class="form-group">
-            <label for="department_id" class="control-label">Department</label>
-            <select name="department_id" id="department_id" class="form-control form-control-border" required data-placeholder="Select Deparment Here">
+            <label for="department_id" class="control-label">Gedung</label>
+            <select name="department_id" id="department_id" class="form-control form-control-border" required data-placeholder="Pilih Gedung Disini">
                 <option <?= !isset($department_id) == 1 ? "selected" :"" ?>></option>
                 <?php 
                 $department = $conn->query("SELECT * FROM `department_list` where `status` = 1 ".(isset($department_id) ? "OR id = '{$department_id}'" : "")." order by `name` asc");
@@ -28,12 +28,12 @@ if(isset($_GET['id'])){
             </select>
         </div>
         <div class="form-group">
-            <label for="name" class="control-label">Name</label>
-            <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Curriculum Name" value ="<?php echo isset($name) ? $name : '' ?>" required>
+            <label for="name" class="control-label">Kapasitas</label>
+            <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Kapasitas Yang Tersedia" value ="<?php echo isset($name) ? $name : '' ?>" required>
         </div>
         <div class="form-group">
-            <label for="description" class="control-label">Description</label>
-            <textarea rows="3" name="description" id="description" class="form-control form-control-border" placeholder="Write the Curriculum description here." required><?php echo isset($description) ? $description : '' ?></textarea>
+            <label for="description" class="control-label">Deskripsi</label>
+            <textarea rows="3" name="description" id="description" class="form-control form-control-border" placeholder="Tulis Deskripsi Event" required><?php echo isset($description) ? $description : '' ?></textarea>
         </div>
         <div class="form-group">
             <label for="" class="control-label">Status</label>
