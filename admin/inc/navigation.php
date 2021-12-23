@@ -70,15 +70,15 @@
                     <?php if($_settings->userdata('type') == 1): ?>
                     <li class="nav-header">Maintenance</li>
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=departments" class="nav-link nav-departments">
+                      <a href="<?php echo base_url ?>admin/?page=eventlist" class="nav-link nav-eventlist">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                          Departments
+                          Input Event
                         </p>
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=archives" class="nav-link nav-archives">
+                      <a href="<?php echo base_url ?>admin/?page=eventlist" class="nav-link nav-eventlist">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
                           List event

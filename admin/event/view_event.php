@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT c.*, d.name as department from `curriculum_list` c inner join `department_list` d on c.department_id = d.id where c.id = '{$_GET['id']}'");
+    $qry = $conn->query("SELECT c.*, d.name as eventlist from `event` c inner join `event_list` d on c.eventlist_id = d.id where c.id = '{$_GET['id']}'");
     if($qry->num_rows > 0){
         $res = $qry->fetch_array();
         foreach($res as $k => $v){
@@ -19,8 +19,8 @@ if(isset($_GET['id'])){
 <div class="container-fluid">
     <dl>
         <dt class="text-muted">Event</dt>
-        <dd class='pl-4 fs-4 fw-bold'><?= isset($department) ? $department : '' ?></dd>
-        <dt class="text-muted">Name</dt>
+        <dd class='pl-4 fs-4 fw-bold'><?= isset($eventlist) ? $eventlist : '' ?></dd>
+        <dt class="text-muted">Judul</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($name) ? $name : '' ?></dd>
         <dt class="text-muted">Description</dt>
         <dd class='pl-4'>
@@ -31,11 +31,14 @@ if(isset($_GET['id'])){
             <?php
             if(isset($status)):
                 switch($status){
-                    case '1':
+                    case '2':
                         echo "<span class='badge badge-success badge-pill'>Active</span>";
                         break;
-                    case '0':
+                    case '1':
                         echo "<span class='badge badge-secondary badge-pill'>Inactive</span>";
+                        break;
+                       case '0':
+                        echo "<span class='badge badge-warning badge-pill'>Coming Soon</span>";
                         break;
                 }
             endif;

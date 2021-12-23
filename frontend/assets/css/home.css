@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* JUMBOTRON */
+.jumbotron{
+    background-image: url(../image/bg1.jpg);
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    height: 640px;
+}
+.jumbotron .display-4{
+    color: rgb(20, 20, 20);
+    text-align: center;
+    margin-top: 150px;
+    line-height: 1.5;
+    font-weight: 200;
+    margin-bottom: 60px;
+}
+.jumbotron .display-4 span{
+    font-weight: 500;
+}
+
+/* DESKTOP */
+@media (min-width: 992px){
+
+    .navbar-brand, .nav-link {
+        color: rgb(20, 20, 20) !important;
+    }
+
+    .jumbotron{
+        margin-top: -75px;
+    }
+}

@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(g2.jpg);
+}
+
+.navbar {
+    transition: all 0.4s ease;
+}
+
+
+.navbar-brand {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+.nav-link {
+    color: #a7a7a7 !important;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.nav-link:hover {
+    color: #2e2d2d !important;
+    font-weight: 500;
+}
+
+.nav-link:focus {
+    color: #2e2d2d !important;
+}
+
+/* DESKTOP */
+@media (min-width: 992px) {
+
+    .navbar {
+        position: relative;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .navbar-brand,
+    .nav-link {
+        color: #a7a7a7 !important;
+    }
+}
+
+.carousel-item {
+    height: 100vh;
+    min-height: 300px;
+    background: no-repeat fixed center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.carousel-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.7;
+}
+
+.carousel-caption {
+    margin-bottom: 180px;
+}
+
+.carousel-caption .display-4 {
+    line-height: 1.4;
+    font-weight: 230;
+    font-size: 50px;
+    color: #fff;
+    margin-bottom: 12vh;
+}
+
+.carousel-caption .display-4 span {
+    font-weight: 500;
+}
+
+.slider-btn,
+.btnevt {
+    background-color: #00034e;
+    border-color: #00034e;
+    color: #e3c529;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.slider-btn,
+.btnevt:hover {
+    background-color: transparent;
+    color: #a7a7a7;
+    border-color: #a7a7a7;
+}
+
+/* SLIDER */
+.carousel-item {
+    background: no-repeat fixed center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.carousel-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+    opacity: 0.5;
+}
+
+.carousel-caption {
+    margin-bottom: 200px;
+}
+
+.carousel-caption .display-4 {
+    line-height: 1.1;
+    font-weight: 230;
+    font-size: 30px;
+    color: #fff;
+}
+
+.carousel-caption .display-4 span {
+    font-weight: 500;
+}
+
+.card-btn,
+.btnview:hover {
+    background-color: #00034e;
+    color: #e3c529;
+    border-color: #00034e;
+}
+
+.card-btn,
+.btnview {
+    border-color: #e3c529;
+    background-color: #fff;
+    color: #e3c529;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+
+section {
+    min-height: 50vw;
+}
+
+.kegiatan {
+    padding-top: 50px;
+}
+
+.kegiatan h2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.kegiatan p {
+    font-size: 17px;
+}
+
+.hi-slide {
+    position: relative;
+    width: 754px;
+    height: 292px;
+    margin: 115px auto 0;
+}
+
+.hi-slide .hi-next,
+.hi-slide .hi-prev {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border-radius: 50px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: grey;
+    color: black;
+    transition: all;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hi-slide .hi-next:hover,
+.hi-slide .hi-prev:hover {
+    opacity: 1;
+    background-color: white;
+}
+
+.hi-slide .hi-prev {
+    left: -70px;
+}
+
+.hi-slide .hi-prev::before {
+    content: '<';
+}
+
+.hi-slide .hi-next {
+    right: -70px;
+}
+
+.hi-slide .hi-next::before {
+    content: '>';
+}
+
+.hi-slide>ul {
+    list-style: none;
+    position: relative;
+    width: 754px;
+    height: 292px;
+    margin: 0;
+    padding: 0;
+}
+
+.hi-slide>ul>li {
+    overflow: hidden;
+    position: absolute;
+    z-index: 0;
+    left: 377px;
+    top: 147px;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    cursor: pointer;
+}
+
+.hi-slide>ul>li>img {
+    width: 150%;
+    height: 100%;
+    background-position: center;
+}
+
+/* FOOTER */
+.footer {
+    height: 150px;
+}
+
+.footer,
+.p {
+    padding-top: 20px;
+    line-height: 1.8;
+}

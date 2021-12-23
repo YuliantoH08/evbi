@@ -9,11 +9,10 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">Event
-		
-		</h3>
+		<h3 class="card-title">List Event </h3>
 		<div class="card-tools">
-			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Add New Department</a>
+        <a href="<?php echo base_url ?>admin/?page=eventlist/submit-eventlist" class="nav-link nav-eventlist"><span class="fas fa-plus"></span>  Add Event</a>
+			
 		</div>
 	</div>
 	<div class="card-body">
@@ -23,8 +22,8 @@
 				<colgroup>
 					<col width="5%">
 					<col width="20%">
-					<col width="20%">
-					<col width="30%">
+					<col width="25%">
+					<col width="25%">
 					<col width="15%">
 					<col width="10%">
 				</colgroup>
@@ -32,8 +31,8 @@
 					<tr>
 						<th>#</th>
 						<th>Date Created</th>
-						<th>Name</th>
-						<th>Description</th>
+						<th>Kategori</th>
+						<th>Judul</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -41,15 +40,15 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT * from `department_list`order by `name` asc ");
+						$qry = $conn->query("SELECT c.*, d.name as eventlist from `event` c inner join `event_list` d on c.eventlist_id = d.id order by c.`name` asc");
 						while($row = $qry->fetch_assoc()):
 						
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
 							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+							<td class=""><?php echo $row['eventlist'] ?></td>
 							<td><?php echo ucwords($row['name']) ?></td>
-							<td class="truncate-1"><?php echo $row['description'] ?></td>
 							<td class="text-center">
                                 <?php
                                     switch($row['status']){
@@ -86,16 +85,16 @@
 <script>
 	$(document).ready(function(){
         $('#create_new').click(function(){
-			uni_modal("Department Details","departments/manage_department.php")
+			uni_modal("Data Event","event/manage_event.php")
 		})
         $('.edit_data').click(function(){
-			uni_modal("Department Details","departments/manage_department.php?id="+$(this).attr('data-id'))
+			uni_modal("Data Event","event/manage_event.php?id="+$(this).attr('data-id'))
 		})
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this Department permanently?","delete_department",[$(this).attr('data-id')])
+			_conf("Yakin Menghapus Data Event?","delete_event",[$(this).attr('data-id')])
 		})
 		$('.view_data').click(function(){
-			uni_modal("Department Details","departments/view_department.php?id="+$(this).attr('data-id'))
+			uni_modal("Data Event","event/view_event.php?id="+$(this).attr('data-id'))
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable({
@@ -104,10 +103,10 @@
             ],
         });
 	})
-	function delete_department($id){
+	function delete_curriculum($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_department",
+			url:_base_url_+"classes/Master.php?f=delete_event",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",

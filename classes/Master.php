@@ -20,6 +20,59 @@ Class Master extends DBConnection {
 			exit;
 		}
 	}
+	function save_eventlist(){
+		extract($_POST);
+		$data = "";
+		foreach($_POST as $k =>$v){
+			if(!in_array($k,array('id'))){
+				if(!is_numeric($v))
+					$v = $this->conn->real_escape_string($v);
+				if(!empty($data)) $data .=",";
+				$data .= " `{$k}`='{$v}' ";
+			}
+		}
+		if(empty($id)){
+			$sql = "INSERT INTO `event_list` set {$data} ";
+		}else{
+			$sql = "UPDATE `event_list` set {$data} where id = '{$id}' ";
+		}
+		$check = $this->conn->query("SELECT * FROM `event_list` where `name`='{$name}' ".($id > 0 ? " and id != '{$id}'" : ""))->num_rows;
+		if($check > 0){
+			$resp['status'] = 'failed';
+			$resp['msg'] = "Event sudah ada.";
+		}else{
+			$save = $this->conn->query($sql);
+			if($save){
+				$rid = !empty($id) ? $id : $this->conn->insert_id;
+				$resp['status'] = 'success';
+				if(empty($id))
+					$resp['msg'] = "Detail Event Berhasil Ditambahkan.";
+				else
+					$resp['msg'] = "Detail Event Berhasil Terupdate.";
+			}else{
+				$resp['status'] = 'failed';
+				$resp['msg'] = "An error occured.";
+				$resp['err'] = $this->conn->error."[{$sql}]";
+			}
+		}
+		if($resp['status'] =='success')
+		$this->settings->set_flashdata('success',$resp['msg']);
+		return json_encode($resp);
+	}
+	function delete_eventlist(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `event_list` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Event Berhasil Terhapus.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
+
 	function save_department(){
 		extract($_POST);
 		$data = "";

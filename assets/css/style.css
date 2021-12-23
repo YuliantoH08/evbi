@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* SLIDER */
+.carousel-item {
+    background: no-repeat fixed center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.carousel-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.7;
+}
+
+.carousel-caption {
+    margin-bottom: 200px;
+}
+
+.carousel-caption .display-4 {
+    line-height: 1.1;
+    font-weight: 230;
+    font-size: 30px;
+    color: #fff;
+}
+
+.carousel-caption .display-4 span {
+    font-weight: 500;
+}
+
+.card-btn,
+.btnview:hover {
+    background-color: #00034e;
+    color: #e3c529;
+    border-color: #00034e;
+}
+
+.card-btn,
+.btnview {
+    border-color: #e3c529;
+    background-color: #fff;
+    color: #e3c529;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.navbar {
+    transition: all 0.4s ease;
+}
+
+
+.navbar-brand {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+.nav-link {
+    color: #a7a7a7 !important;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.nav-link:hover {
+    color: #2e2d2d !important;
+    font-weight: 500;
+}
+
+.nav-link:focus {
+    color: #2e2d2d !important;
+}
+
+section {
+    min-height: 50vw;
+}
+
+.gedung {
+    padding-top: 120px;
+}
+
+.gedung h2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.kalendar {
+    padding-top: 60px;
+}
+
+.kalendar h2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.tentang {
+    padding-top: 60px;
+}
+
+.tentang h2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.tentang p {
+    font-size: 17px;
+}
+
+.event {
+    padding-top: 60px;
+}
+
+.event h2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.description-container {
+    height: 400px;
+    margin: 10px 0;
+    display: flex;
+}
+
+.description-container>div {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 4px 8px 0px rgba(1, 1, 1, 0.1);
+    border-top: 1px solid rgb(228, 228, 228);
+}
+
+.description-container h2 {
+    color: var(--darkGray);
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.description-container p {
+    color: var(--gray);
+    text-align: justify;
+    font-size: 15px;
+}
+
+.description-container>div>div {
+    width: 600px;
+}
+
+.description-container>img {
+    width: 28%;
+    object-fit: cover;
+}
+
+.description-left-footer {
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.main p {
+    position: relative;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.main .gallery {
+    position: relative;
+    height: auto;
+    width: 90%;
+    margin: auto;
+    padding: 45px 0;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    /*i write auto four time because we want four rows*/
+    grid-gap: 2vh;
+    grid-auto-flow: dense;
+}
+
+.main .gallery .img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.9);
+    border-radius: 2px;
+}
+
+.main .gallery .img:first-child {
+    grid-column-start: span 2;
+    grid-row-start: span 2;
+}
+
+.main .gallery .img:nth-child(2n+3) {
+    grid-row-start: span 2;
+}
+
+.main .gallery .img:nth-child(4n+5) {
+    grid-column-start: span 2;
+    grid-row-start: span 2;
+}
+
+.main .gallery .img:nth-child(6n+7) {
+    grid-row-start: span 1;
+}
+
+.main .gallery .img:nth-child(7n+8) {
+    grid-column-start: span 2;
+}
+
+.main .gallery .img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.5) grayscale(100);
+    border-radius: 2px;
+    transition: 0.3s ease-in-out;
+}
+
+.main .gallery .img:hover img {
+    filter: brightness(1) grayscale(0);
+}
+
+/* KALENDAR */
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 190px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.filter {
+    grid-area: 1 / 2 / 2 / 3;
+    margin: 6em 0 0 1em;
+}
+
+.event_filter_wrapper {
+    margin: .5em 0;
+}
+
+#calendar {
+    margin: 3em 0 0 0;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.festival .fc-time {
+    display: none;
+}
+
+
+.fc-day-grid-event .fc-content {
+    white-space: normal;
+}
+
+a.fc-event-past {
+    background-color: grey !important;
+    border: none;
+}
+
+a.fc-event.hidden {
+    display: none;
+}
+
+/* AKHIR KALENDAR */
+
+/* FOOTER */
+.footer {
+    height: 150px;
+}
+
+.footer,
+.p {
+    padding-top: 20px;
+    line-height: 1.8;
+}
+
+/* AKHIR FOOTER */
+
+/* DESKTOP */
+@media (min-width: 992px) {
+
+    .navbar {
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .navbar-brand,
+    .nav-link {
+        color: #a7a7a7 !important;
+    }
+
+    .carousel-item {
+        height: 100vh;
+        min-height: 300px;
+        background: no-repeat fixed center fixed;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+    .carousel-item::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #000;
+        opacity: 0.7;
+    }
+
+    .carousel-caption {
+        margin-bottom: 180px;
+    }
+
+    .carousel-caption .display-4 {
+        line-height: 1.4;
+        font-weight: 230;
+        font-size: 50px;
+        color: #fff;
+        margin-bottom: 12vh;
+    }
+
+    .carousel-caption .display-4 span {
+        font-weight: 500;
+    }
+
+    .slider-btn,
+    .btnevt {
+        background-color: #00034e;
+        border-color: #00034e;
+        color: #e3c529;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .slider-btn,
+    .btnevt:hover {
+        background-color: transparent;
+        color: #a7a7a7;
+        border-color: #a7a7a7;
+    }
+
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+
+}

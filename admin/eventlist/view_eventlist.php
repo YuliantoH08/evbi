@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT c.*, d.name as department from `curriculum_list` c inner join `department_list` d on c.department_id = d.id where c.id = '{$_GET['id']}'");
+    $qry = $conn->query("SELECT * FROM `package_list` where id = '{$_GET['id']}'");
     if($qry->num_rows > 0){
         $res = $qry->fetch_array();
         foreach($res as $k => $v){
@@ -18,8 +18,6 @@ if(isset($_GET['id'])){
 </style>
 <div class="container-fluid">
     <dl>
-        <dt class="text-muted">Event</dt>
-        <dd class='pl-4 fs-4 fw-bold'><?= isset($department) ? $department : '' ?></dd>
         <dt class="text-muted">Name</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($name) ? $name : '' ?></dd>
         <dt class="text-muted">Description</dt>

@@ -9,11 +9,9 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">Event
-		
-		</h3>
+		<h3 class="card-title">List Event</h3>
 		<div class="card-tools">
-			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Add New Department</a>
+			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-primary"><span class="fas fa-plus"></span>  Add New Event</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -41,7 +39,7 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT * from `department_list`order by `name` asc ");
+						$qry = $conn->query("SELECT * from `eventlist_list`order by `name` asc ");
 						while($row = $qry->fetch_assoc()):
 						
 					?>
@@ -86,16 +84,16 @@
 <script>
 	$(document).ready(function(){
         $('#create_new').click(function(){
-			uni_modal("Department Details","departments/manage_department.php")
+			uni_modal("eventlist Details","eventlist/manage_eventlist.php")
 		})
         $('.edit_data').click(function(){
-			uni_modal("Department Details","departments/manage_department.php?id="+$(this).attr('data-id'))
+			uni_modal("Event Details","eventlist/manage_eventlist.php?id="+$(this).attr('data-id'))
 		})
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this Department permanently?","delete_department",[$(this).attr('data-id')])
+			_conf("Are you sure to delete this Event permanently?","delete_eventlist",[$(this).attr('data-id')])
 		})
 		$('.view_data').click(function(){
-			uni_modal("Department Details","departments/view_department.php?id="+$(this).attr('data-id'))
+			uni_modal("eventlist Details","eventlist/view_eventlist.php?id="+$(this).attr('data-id'))
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable({
@@ -104,10 +102,10 @@
             ],
         });
 	})
-	function delete_department($id){
+	function delete_eventlist($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_department",
+			url:_base_url_+"classes/Master.php?f=delete_eventlist",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",
